@@ -96,3 +96,16 @@ trimal -in tsf.pep.align -out tsf.pep.align.trimal.fa -gt 0.95 -cons 50 -htmlout
 catfasta2phyml.pl -f -sequential -concatenate *.trimal.fa > genomes.all.maker.fasta
 
 nohup iqtree_1.6.10 -s genomes.all.maker.fasta -alrt 1000 -bb 1000 -nt 10 &
+
+# Phylogenetic analysis based on genes of interest
+## use
+nohup perl get_all_pro_V1.pl --KEGG_2019 K01938 KEGG &
+
+after add the reference sequence，execute the following command
+
+nohup muscle -in K01938.txt -out K01938.align -maxiters 100  &
+
+nohup trimal -in K01938.align -out K01938.align.trimal.fa -gt 0.95 -cons 50 -htmlout K01938.align.trimal.html  &
+
+nohup iqtree_1.6.10 -s K01938.align.trimal.fa -alrt 1000 -bb 1000 -nt AUTO &
+

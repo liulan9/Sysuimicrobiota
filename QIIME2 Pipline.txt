@@ -51,7 +51,7 @@ qiime phylogeny align-to-tree-mafft-fasttree \
   --o-rooted-tree rooted-tree.qza
 
 qiime feature-classifier classify-sklearn \
-  --i-classifier /mdata/liulan/qiime2/2/silva-138-99-515-806-nb-classifier.qza \
+  --i-classifier silva-138-99-515-806-nb-classifier.qza \
   --i-reads rep-seqs.qza \
   --o-classification taxonomy.qza 
 
